@@ -1,25 +1,19 @@
 (() => {
-  const $ = (sel) => document.querySelector(sel);
+  const $ = (s) => document.querySelector(s);
 
-  // Mobile menu
-  $("#btnMenu")?.addEventListener("click", () => $("#mobileMenu")?.classList.toggle("is-open"));
-
-  // Toast
-  const toast = $("#toast");
-  let t = null;
-  function showToast(msg) {
-    if (!toast) return;
-    toast.textContent = msg;
-    toast.classList.add("is-show");
-    clearTimeout(t);
-    t = setTimeout(() => toast.classList.remove("is-show"), 2400);
-  }
-
-  $("#btnSeeFeatures")?.addEventListener("click", () => {
-    document.querySelector("#features")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  $("#btnMenu")?.addEventListener("click", () => {
+    $("#mobileMenu")?.classList.toggle("is-open");
   });
 
-  $("#btnAbout")?.addEventListener("click", () => {
-    showToast("FixHome: solusi kebutuhan tukang (demo landing).");
+  // Smooth scroll untuk anchor (Feature/Showcase/About)
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      $("#mobileMenu")?.classList.remove("is-open");
+    });
   });
 })();
