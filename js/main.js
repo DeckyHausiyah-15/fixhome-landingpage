@@ -2,29 +2,21 @@
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-  // ====== Year
-  const yearEl = $("#year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  // Mobile menu
+  $("#btnMenu")?.addEventListener("click", () => $("#mobileMenu")?.classList.toggle("is-open"));
 
-  // ====== Mobile menu
-  const btnMenu = $("#btnMenu");
-  const mobileMenu = $("#mobileMenu");
-  btnMenu?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("is-open");
-  });
-
-  // ====== Toast
+  // Toast
   const toast = $("#toast");
-  let toastTimer = null;
-  function showToast(message) {
+  let t = null;
+  function showToast(msg) {
     if (!toast) return;
-    toast.textContent = message;
+    toast.textContent = msg;
     toast.classList.add("is-show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("is-show"), 2500);
+    clearTimeout(t);
+    t = setTimeout(() => toast.classList.remove("is-show"), 2500);
   }
 
-  // ====== Carousel (simple scroll + dots)
+  // ===== Carousel
   const viewport = $("#carouselViewport");
   const track = $("#carouselTrack");
   const dotsWrap = $("#dots");
@@ -36,12 +28,9 @@
 
   function computeIndex() {
     if (!viewport || !track || !track.children.length) return 0;
-
-    // hitung step pakai child pertama + gap
     const first = track.children[0].getBoundingClientRect().width || 1;
-    const gap = 16; // sama seperti CSS
+    const gap = 16;
     const step = first + gap;
-
     const idx = Math.round(viewport.scrollLeft / step);
     return Math.max(0, Math.min(dots.length - 1, idx));
   }
@@ -55,9 +44,7 @@
     });
   });
 
-  viewport?.addEventListener("scroll", () => {
-    setActiveDot(computeIndex());
-  });
+  viewport?.addEventListener("scroll", () => setActiveDot(computeIndex()));
 
   dots.forEach((dot, idx) => {
     dot.addEventListener("click", () => {
@@ -69,64 +56,7 @@
     });
   });
 
-  // Promo buttons demo
-  $("#btnPromo1")?.addEventListener("click", () => showToast("Promo: cek mitra terverifikasi (demo)."));
-  $("#btnPromo2")?.addEventListener("click", () => showToast("Promo: service AC (demo)."));
-  $("#btnPromo3")?.addEventListener("click", () => showToast("Promo: jasa rumah tangga (demo)."));
-
-  // ====== Booking Modal
-  const modal = $("#bookingModal");
-  const bookingForm = $("#bookingForm");
-  const serviceNameInput = $("#serviceName");
-
-  function openModal(serviceName = "") {
-    if (!modal) return;
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    if (serviceNameInput) {
-      serviceNameInput.value = serviceName || "";
-      serviceNameInput.focus();
-    }
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-  }
-
-  $("#btnOpenBooking")?.addEventListener("click", () => openModal(""));
-  $("#btnOpenBooking2")?.addEventListener("click", () => openModal(""));
-
-  // close overlay / close buttons
-  modal?.addEventListener("click", (e) => {
-    const target = e.target;
-    if (target?.dataset?.close === "true") closeModal();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
-  });
-
-  // Booking button in service cards
-  $$("#serviceGrid [data-book]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const name = btn.getAttribute("data-book") || "";
-      openModal(name);
-    });
-  });
-
-  bookingForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const payload = Object.fromEntries(new FormData(e.target).entries());
-    console.log("BOOKING_PAYLOAD:", payload);
-
-    showToast("Booking terkirim (demo). Integrasikan ke backend untuk produksi.");
-    e.target.reset();
-    closeModal();
-  });
-
-  // ====== Filter + Search (fitur dari versi sebelumnya)
+  // ===== Filter + Search
   const cats = $$("#catsRow .cat");
   const chips = $$("#chipRow .chip");
   const cards = $$("#serviceGrid .serviceCard");
@@ -144,11 +74,7 @@
 
   function setActiveCategory(cat) {
     activeCategory = normalize(cat || "all");
-
-    // sync UI: cats
     cats.forEach((c) => c.classList.toggle("is-active", normalize(c.dataset.cat) === activeCategory));
-
-    // sync UI: chips
     chips.forEach((ch) => ch.classList.toggle("is-active", normalize(ch.dataset.filter) === activeCategory));
   }
 
@@ -157,7 +83,6 @@
     const city = normalize(citySelect?.value || "all");
 
     let visible = 0;
-
     cards.forEach((card) => {
       const cat = normalize(card.dataset.category);
       const cardCity = normalize(card.dataset.city);
@@ -179,17 +104,14 @@
     }
   }
 
-  // Cats click => filter
   cats.forEach((c) => {
     c.addEventListener("click", () => {
       setActiveCategory(c.dataset.cat || "all");
       applyFilters();
-      // scroll ke layanan supaya berasa seperti OLX kategori
-      document.getElementById("layanan")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      $("#layanan")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
-  // Chips click => filter
   chips.forEach((ch) => {
     ch.addEventListener("click", () => {
       setActiveCategory(ch.dataset.filter || "all");
@@ -197,16 +119,22 @@
     });
   });
 
-  // Search
   btnSearch?.addEventListener("click", applyFilters);
   searchInput?.addEventListener("input", applyFilters);
   citySelect?.addEventListener("change", applyFilters);
 
-  // ====== Misc demo buttons
-  $("#btnLogin")?.addEventListener("click", () => showToast("Login/daftar (demo)."));
-  $("#btnPartner")?.addEventListener("click", () => showToast("Pendaftaran mitra (demo)."));
+  // Demo booking buttons
+  $$("[data-demo]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const msg = btn.getAttribute("data-demo") || "Booking (demo)";
+      console.log("BOOKING_DEMO:", msg);
+      showToast(`${msg} — cek console`);
+    });
+  });
 
   // init
   setActiveCategory("all");
   applyFilters();
+
+  $("#btnLogin")?.addEventListener("click", () => showToast("Login/daftar (demo)."));
 })();
