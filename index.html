@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FixHome — Welcome</title>
+  <meta name="description" content="Welcome page FixHome sebelum masuk ke homepage." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Header (welcome style) -->
+  <header class="w2Header">
+    <div class="container w2Header__inner">
+      <a class="w2Brand" href="index.html" aria-label="FixHome welcome">
+        <span class="w2Brand__mark">FH</span>
+        <span class="w2Brand__name">FixHome</span>
+      </a>
+
+      <nav class="w2Nav" aria-label="Welcome navigation">
+        <a href="#feature">Feature</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="w2Actions">
+        <a class="btn w2BtnAccent" href="landing.html" aria-label="Masuk ke homepage">
+          Masuk
+        </a>
+
+        <button class="hamburger w2Hamburger" type="button" aria-label="Buka menu" id="btnMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="container mobilemenu" id="mobileMenu" aria-label="Menu mobile">
+      <a href="#feature">Feature</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#about">About</a>
+      <a class="btn btn--primary btn--block" href="landing.html">Masuk</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="w2Main">
+    <div class="container w2Hero">
+      <section class="w2Hero__left" aria-label="FixHome hero">
+        <p class="w2Kicker">Platform jasa tukang & home service</p>
+
+        <h1 class="w2Title">
+          Cari <span class="w2Title__strong">tukang terpercaya</span><br />
+          lebih cepat di <span class="w2Title__accent">FixHome</span><span class="w2Cursor">_</span>
+        </h1>
+
+        <p class="w2Desc">
+          AC, listrik, plumbing, bangunan ringan, kebersihan, furniture, dan perbaikan umum.
+          Jelajahi layanan, filter kota, dan pilih yang paling cocok.
+        </p>
+
+        <div class="w2CTA">
+          <a class="btn btn--primary btn--pill w2PrimaryCTA" href="landing.html">
+            Get Started
+          </a>
+          <a class="btn btn--pill w2GhostCTA" href="landing.html#layanan">
+            Lihat layanan
+          </a>
+        </div>
+
+        <div class="w2Proof" aria-label="Keunggulan singkat">
+          <span class="w2Chip">✓ Mitra terverifikasi</span>
+          <span class="w2Chip">✓ Rating & ulasan</span>
+          <span class="w2Chip">✓ Respon cepat (demo)</span>
+        </div>
+      </section>
+
+      <!-- Ilustrasi Tukang (pengganti gambar handphone) -->
+      <aside class="w2Hero__right" aria-label="Ilustrasi tukang FixHome">
+        <div class="w2Art">
+          <div class="w2Glow w2Glow--a" aria-hidden="true"></div>
+          <div class="w2Glow w2Glow--b" aria-hidden="true"></div>
+          <div class="w2Ring" aria-hidden="true"></div>
+
+          <div class="w2Card">
+            <div class="w2Card__badge">FixHome • Tukang</div>
+
+            <!-- SVG Handyman -->
+            <svg class="w2Svg" viewBox="0 0 520 520" role="img" aria-label="Ilustrasi tukang">
+              <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#2563eb"/>
+                  <stop offset="1" stop-color="#60a5fa"/>
+                </linearGradient>
+                <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#3b82f6"/>
+                  <stop offset="1" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#0f172a" flood-opacity=".18"/>
+                </filter>
+              </defs>
+
+              <!-- background panel -->
+              <rect x="40" y="40" width="440" height="440" rx="44" fill="url(#bg)" filter="url(#shadow)"/>
+              <circle cx="380" cy="130" r="70" fill="#93c5fd" opacity=".35"/>
+              <circle cx="130" cy="380" r="90" fill="#bfdbfe" opacity=".25"/>
+
+              <!-- toolbox -->
+              <rect x="108" y="350" width="170" height="92" rx="18" fill="#0b1220" opacity=".22"/>
+              <rect x="112" y="344" width="170" height="92" rx="18" fill="#ffffff" opacity=".92"/>
+              <rect x="148" y="330" width="96" height="30" rx="14" fill="#ffffff" opacity=".86"/>
+
+              <!-- body -->
+              <path d="M205 310c20-38 90-38 110 0l18 70c5 22-10 42-33 42H220c-23 0-38-20-33-42l18-70z"
+                    fill="url(#shirt)"/>
+              <path d="M230 310c10 18 50 18 60 0" fill="none" stroke="#bfdbfe" stroke-width="10" opacity=".6"/>
+
+              <!-- head -->
+              <circle cx="260" cy="220" r="58" fill="#ffe4c7"/>
+              <!-- hair -->
+              <path d="M208 220c8-44 36-64 72-64s64 20 72 64c-22-22-48-30-72-30s-50 8-72 30z"
+                    fill="#111827" opacity=".88"/>
+
+              <!-- helmet -->
+              <path d="M192 212c0-50 38-86 88-86s88 36 88 86v16H192v-16z"
+                    fill="#ffffff" opacity=".92"/>
+              <rect x="196" y="224" width="168" height="26" rx="13" fill="#e5efff" opacity=".95"/>
+              <rect x="258" y="126" width="44" height="86" rx="16" fill="#e5efff" opacity=".95"/>
+
+              <!-- face details -->
+              <circle cx="238" cy="224" r="7" fill="#111827" opacity=".8"/>
+              <circle cx="284" cy="224" r="7" fill="#111827" opacity=".8"/>
+              <path d="M242 256c12 12 24 12 36 0" stroke="#111827" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+
+              <!-- wrench (tool) -->
+              <path d="M345 300l45 45c10 10 10 26 0 36s-26 10-36 0l-45-45 36-36z"
+                    fill="#ffffff" opacity=".92"/>
+              <path d="M330 315l30-30" stroke="#1d4ed8" stroke-width="10" stroke-linecap="round" opacity=".75"/>
+
+              <!-- text-ish panel -->
+              <rect x="120" y="92" width="250" height="60" rx="18" fill="#ffffff" opacity=".92"/>
+              <rect x="140" y="112" width="180" height="12" rx="6" fill="#93c5fd" opacity=".95"/>
+              <rect x="140" y="132" width="120" height="10" rx="5" fill="#c7d2fe" opacity=".95"/>
+            </svg>
+
+            <div class="w2Card__footer">
+              <div class="w2Tag">⚡ Cepat</div>
+              <div class="w2Tag">⭐ 4.8</div>
+              <div class="w2Tag">🧰 Lengkap</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Sections sederhana -->
+    <section class="w2Section" id="feature">
+      <div class="container">
+        <div class="w2Section__head">
+          <h2>Feature</h2>
+          <p class="muted">Tiga hal yang bikin orang langsung paham manfaat FixHome.</p>
+        </div>
+
+        <div class="w2Grid3">
+          <article class="w2Mini">
+            <div class="w2Mini__icon">📍</div>
+            <div>
+              <strong>Filter lokasi</strong>
+              <div class="muted">Pilih kota, hasil lebih relevan</div>
+            </div>
+          </article>
+
+          <article class="w2Mini">
+            <div class="w2Mini__icon">🔎</div>
+            <div>
+              <strong>Pencarian cepat</strong>
+              <div class="muted">Cari “pipa bocor”, “servis AC”</div>
+            </div>
+          </article>
+
+          <article class="w2Mini">
+            <div class="w2Mini__icon">⭐</div>
+            <div>
+              <strong>Rating & ulasan</strong>
+              <div class="muted">Bantu pilih mitra terbaik</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="w2Section" id="showcase">
+      <div class="container">
+        <div class="w2Section__head">
+          <h2>Showcase</h2>
+          <p class="muted">Lanjut ke homepage untuk melihat daftar layanan.</p>
+        </div>
+
+        <div class="w2ShowcaseBox">
+          <div class="w2ShowLeft">
+            <strong>Siap mulai?</strong>
+            <p class="muted">Masuk ke homepage dan coba fitur filter + search.</p>
+          </div>
+          <a class="btn btn--primary btn--pill" href="landing.html">Masuk Homepage</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="w2Section" id="about">
+      <div class="container">
+        <div class="w2Section__head">
+          <h2>About</h2>
+          <p class="muted">FixHome (demo) dibuat untuk memudahkan pencarian tukang sesuai kebutuhan rumah.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/welcome.js"></script>
+</body>
+</html>
