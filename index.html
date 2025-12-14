@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FixHome — Cari Tukang Terpercaya</title>
+  <meta name="description" content="FixHome membantu menemukan tukang/handyman terverifikasi. Booking cepat, estimasi jelas, rating & ulasan." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a class="topbar__left" href="#" aria-label="Download aplikasi FixHome">Download FixHome App</a>
+      <nav class="topbar__right" aria-label="Top navigation">
+        <a href="#promo">Promo</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#mitra">Pusat Bantuan</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="brand" href="#" aria-label="FixHome beranda">
+        <span class="brand__mark">FH</span>
+        <span class="brand__name">FixHome</span>
+      </a>
+
+      <div class="searchbar" role="search" aria-label="Pencarian FixHome">
+        <label class="sr-only" for="citySelect">Lokasi</label>
+        <div class="searchbar__location">
+          <span class="icon" aria-hidden="true">📍</span>
+          <select id="citySelect" aria-label="Pilih lokasi">
+            <option value="all">Semua Kota</option>
+            <option value="surabaya">Surabaya</option>
+            <option value="sidoarjo">Sidoarjo</option>
+            <option value="gresik">Gresik</option>
+            <option value="malang">Malang</option>
+          </select>
+          <span class="caret" aria-hidden="true">▾</span>
+        </div>
+
+        <label class="sr-only" for="searchInput">Kata kunci</label>
+        <div class="searchbar__query">
+          <span class="icon" aria-hidden="true">🔎</span>
+          <input id="searchInput" type="search" placeholder="Temukan tukang listrik, AC, pipa, dan lainnya..." autocomplete="off" />
+        </div>
+
+        <button class="btn btn--primary btn--search" type="button" id="btnSearch">Cari</button>
+      </div>
+
+      <div class="header__actions">
+        <button class="linkBtn" type="button" id="btnLogin">Login/daftar</button>
+        <button class="btn btn--primary" type="button" id="btnOpenBooking">
+          <span class="btn__plus" aria-hidden="true">＋</span>
+          Booking
+        </button>
+
+        <button class="hamburger" type="button" aria-label="Buka menu" id="btnMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="container mobilemenu" id="mobileMenu" aria-label="Menu mobile">
+      <a href="#promo">Promo</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#mitra">Pusat Bantuan</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Promo Carousel -->
+    <section class="promo" id="promo">
+      <div class="container">
+        <div class="carousel">
+          <button class="carousel__nav carousel__nav--left" type="button" aria-label="Sebelumnya" data-dir="-1">‹</button>
+
+          <div class="carousel__viewport" id="carouselViewport">
+            <div class="carousel__track" id="carouselTrack">
+
+              <article class="promoCard promoCard--sm promoCard--img">
+                <div class="promoCard__img"></div>
+                <div class="promoCard__overlay">
+                  <span class="promoTag">Diskon</span>
+                </div>
+              </article>
+
+              <article class="promoCard promoCard--lg promoCard--blue">
+                <div class="promoCard__content">
+                  <h2>Temukan Tukang Terverifikasi di Sekitarmu</h2>
+                  <p>Chat & booking cepat. Estimasi biaya transparan.</p>
+                  <button class="btn btn--white" type="button" id="btnPromo1">Cek Sekarang</button>
+                </div>
+                <div class="promoCard__media" aria-hidden="true">
+                  <div class="phone"></div>
+                  <div class="badgeFloat">⭐ 4.8</div>
+                </div>
+              </article>
+
+              <article class="promoCard promoCard--lg promoCard--light">
+                <div class="promoCard__content">
+                  <h2>Booking Service AC, Gratis Konsultasi</h2>
+                  <p>Jelaskan keluhan, dapat rekomendasi teknisi terbaik.</p>
+                  <button class="btn btn--primary" type="button" id="btnPromo2">Cek Sekarang</button>
+                </div>
+                <div class="promoCard__media" aria-hidden="true">
+                  <div class="device"></div>
+                </div>
+              </article>
+
+              <article class="promoCard promoCard--sm promoCard--purple">
+                <div class="promoCard__content">
+                  <h3>Jasa Rumah Tangga</h3>
+                  <button class="btn btn--white btn--pill" type="button" id="btnPromo3">Lihat</button>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <button class="carousel__nav carousel__nav--right" type="button" aria-label="Berikutnya" data-dir="1">›</button>
+        </div>
+
+        <div class="dots" id="dots" aria-label="Indikator slide">
+          <button class="dot is-active" type="button" aria-label="Slide 1"></button>
+          <button class="dot" type="button" aria-label="Slide 2"></button>
+          <button class="dot" type="button" aria-label="Slide 3"></button>
+          <button class="dot" type="button" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kategori Icon (klik untuk filter layanan) -->
+    <section class="cats">
+      <div class="container">
+        <div class="cats__row" id="catsRow">
+          <button class="cat is-active" type="button" data-cat="all">
+            <span class="cat__icon">✨</span><span class="cat__label">Lihat semua</span>
+          </button>
+          <button class="cat" type="button" data-cat="ac"><span class="cat__icon">❄️</span><span class="cat__label">AC</span></button>
+          <button class="cat" type="button" data-cat="listrik"><span class="cat__icon">⚡</span><span class="cat__label">Listrik</span></button>
+          <button class="cat" type="button" data-cat="plumbing"><span class="cat__icon">🚰</span><span class="cat__label">Plumbing</span></button>
+          <button class="cat" type="button" data-cat="bangunan"><span class="cat__icon">🧱</span><span class="cat__label">Bangunan</span></button>
+          <button class="cat" type="button" data-cat="kebersihan"><span class="cat__icon">🧼</span><span class="cat__label">Kebersihan</span></button>
+          <button class="cat" type="button" data-cat="furniture"><span class="cat__icon">🪑</span><span class="cat__label">Furniture</span></button>
+          <button class="cat" type="button" data-cat="perbaikan"><span class="cat__icon">🧰</span><span class="cat__label">Perbaikan</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layanan (fitur: filter chips + booking) -->
+    <section class="section" id="layanan">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Layanan Populer</h2>
+            <p class="muted">Filter kategori, pakai search, lalu booking mitra terbaik.</p>
+          </div>
+          <div class="resultPill" id="resultHint">Menampilkan semua layanan.</div>
+        </div>
+
+        <div class="filters" id="chipRow">
+          <button class="chip is-active" type="button" data-filter="all">Semua</button>
+          <button class="chip" type="button" data-filter="ac">AC</button>
+          <button class="chip" type="button" data-filter="listrik">Listrik</button>
+          <button class="chip" type="button" data-filter="plumbing">Plumbing</button>
+          <button class="chip" type="button" data-filter="bangunan">Bangunan</button>
+          <button class="chip" type="button" data-filter="kebersihan">Kebersihan</button>
+          <button class="chip" type="button" data-filter="furniture">Furniture</button>
+          <button class="chip" type="button" data-filter="perbaikan">Perbaikan</button>
+        </div>
+
+        <div class="serviceGrid" id="serviceGrid" aria-live="polite">
+
+          <article class="serviceCard" data-category="ac" data-city="surabaya">
+            <div class="serviceCard__top">
+              <div class="svcIcon">❄️</div>
+              <div class="svcMeta">
+                <h3>Servis AC</h3>
+                <p class="muted">Cuci AC, tambah freon, perbaikan ringan.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp85.000</span>
+              <span class="pill">4.8★</span>
+              <span class="pill">Surabaya</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Servis AC">Booking</button>
+          </article>
+
+          <article class="serviceCard" data-category="listrik" data-city="sidoarjo">
+            <div class="serviceCard__top">
+              <div class="svcIcon">⚡</div>
+              <div class="svcMeta">
+                <h3>Teknisi Listrik</h3>
+                <p class="muted">MCB, stop kontak, instalasi lampu.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp90.000</span>
+              <span class="pill">4.7★</span>
+              <span class="pill">Sidoarjo</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Teknisi Listrik">Booking</button>
+          </article>
+
+          <article class="serviceCard" data-category="plumbing" data-city="surabaya">
+            <div class="serviceCard__top">
+              <div class="svcIcon">🚰</div>
+              <div class="svcMeta">
+                <h3>Perbaikan Pipa</h3>
+                <p class="muted">Pipa bocor, saluran mampet, kran rusak.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp95.000</span>
+              <span class="pill">4.6★</span>
+              <span class="pill">Surabaya</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Perbaikan Pipa">Booking</button>
+          </article>
+
+          <article class="serviceCard" data-category="bangunan" data-city="gresik">
+            <div class="serviceCard__top">
+              <div class="svcIcon">🧱</div>
+              <div class="svcMeta">
+                <h3>Bangunan Ringan</h3>
+                <p class="muted">Tambal dinding, cat kecil, perbaikan minor.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp150.000</span>
+              <span class="pill">4.5★</span>
+              <span class="pill">Gresik</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Bangunan Ringan">Booking</button>
+          </article>
+
+          <article class="serviceCard" data-category="kebersihan" data-city="malang">
+            <div class="serviceCard__top">
+              <div class="svcIcon">🧼</div>
+              <div class="svcMeta">
+                <h3>Kebersihan Rumah</h3>
+                <p class="muted">Deep cleaning, kamar mandi, dapur.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp120.000</span>
+              <span class="pill">4.7★</span>
+              <span class="pill">Malang</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Kebersihan Rumah">Booking</button>
+          </article>
+
+          <article class="serviceCard" data-category="furniture" data-city="surabaya">
+            <div class="serviceCard__top">
+              <div class="svcIcon">🪑</div>
+              <div class="svcMeta">
+                <h3>Perbaikan Furniture</h3>
+                <p class="muted">Engsel, laci, perbaikan kursi/meja.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp110.000</span>
+              <span class="pill">4.6★</span>
+              <span class="pill">Surabaya</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Perbaikan Furniture">Booking</button>
+          </article>
+
+          <article class="serviceCard" data-category="perbaikan" data-city="malang">
+            <div class="serviceCard__top">
+              <div class="svcIcon">🧰</div>
+              <div class="svcMeta">
+                <h3>Perbaikan Umum</h3>
+                <p class="muted">Pintu macet, kunci, rak, instalasi kecil.</p>
+              </div>
+            </div>
+            <div class="svcBadges">
+              <span class="pill">Mulai Rp80.000</span>
+              <span class="pill">4.5★</span>
+              <span class="pill">Malang</span>
+            </div>
+            <button class="btn btn--primary btn--block" type="button" data-book="Perbaikan Umum">Booking</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Cara Kerja -->
+    <section class="section section--alt" id="cara-kerja">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Cara Kerja FixHome</h2>
+            <p class="muted">Alur sederhana agar kebutuhan tukang cepat terpenuhi.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step"><div class="stepNum">1</div><h3>Pilih layanan</h3><p class="muted">Cari kategori & jelaskan kebutuhan.</p></div>
+          <div class="step"><div class="stepNum">2</div><h3>Cocokkan mitra</h3><p class="muted">Mitra terdekat & tersedia diprioritaskan.</p></div>
+          <div class="step"><div class="stepNum">3</div><h3>Booking & bayar</h3><p class="muted">Pilih jadwal, lihat estimasi, konfirmasi.</p></div>
+          <div class="step"><div class="stepNum">4</div><h3>Selesai & ulasan</h3><p class="muted">Pantau status, selesai, beri rating.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mitra -->
+    <section class="section" id="mitra">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Jadi Mitra FixHome</h2>
+            <p class="muted">Dapatkan order lebih stabil dengan profil & rating profesional.</p>
+          </div>
+          <button class="btn btn--primary" type="button" id="btnPartner">Daftar Mitra</button>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <h3>Benefit untuk mitra</h3>
+            <ul class="list">
+              <li>Akses pelanggan baru di area terdekat</li>
+              <li>Manajemen jadwal & order</li>
+              <li>Profil & portofolio meningkatkan trust</li>
+              <li>Skema insentif berbasis performa</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Persyaratan (contoh)</h3>
+            <ul class="list mutedList">
+              <li>KTP & data diri valid</li>
+              <li>Keahlian sesuai layanan</li>
+              <li>Komitmen waktu & etika kerja</li>
+              <li>Verifikasi dasar</li>
+            </ul>
+            <p class="muted small">*Persyaratan bisa disesuaikan dengan MVP FixHome.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="section section--alt" id="testimoni">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Apa kata pengguna</h2>
+            <p class="muted">Contoh testimoni untuk landing page.</p>
+          </div>
+        </div>
+
+        <div class="quotes">
+          <figure class="quote">
+            <blockquote>“Cari tukang AC biasanya susah. Di FixHome lebih cepat dan harganya jelas.”</blockquote>
+            <figcaption>Rina — Surabaya</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>“Teknisi datang sesuai jadwal. Bisa chat dulu sebelum datang.”</blockquote>
+            <figcaption>Bayu — Sidoarjo</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>“Suka sistem ratingnya, jadi lebih yakin pilih mitra yang bagus.”</blockquote>
+            <figcaption>Wulan — Malang</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>FAQ</h2>
+            <p class="muted">Pertanyaan yang sering ditanyakan.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <details>
+            <summary>Apakah FixHome menyediakan estimasi biaya?</summary>
+            <p class="muted">Ya. Estimasi ditampilkan di awal berdasarkan kategori & detail kebutuhan. Biaya akhir menyesuaikan kondisi lapangan setelah konfirmasi.</p>
+          </details>
+          <details>
+            <summary>Bagaimana memastikan tukang terpercaya?</summary>
+            <p class="muted">Mitra melewati verifikasi dasar dan punya rating/ulasan. Kamu bisa melihat riwayat pekerjaan & performanya.</p>
+          </details>
+          <details>
+            <summary>Apakah bisa booking sesuai jadwal?</summary>
+            <p class="muted">Bisa. Pilih jadwal lalu sistem mencocokkan mitra yang tersedia.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container cta__box">
+        <div>
+          <h2>Butuh tukang sekarang?</h2>
+          <p class="muted">Klik booking, jelaskan kebutuhanmu dalam 1 menit.</p>
+        </div>
+        <button class="btn btn--primary" type="button" id="btnOpenBooking2">Booking Sekarang</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <div class="brand brand--footer">
+          <span class="brand__mark">FH</span>
+          <span class="brand__name">FixHome</span>
+        </div>
+        <p class="muted">Membantu kebutuhan tukang lebih mudah, cepat, dan terpercaya.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Menu</h4>
+        <a href="#layanan">Layanan</a>
+        <a href="#cara-kerja">Cara Kerja</a>
+        <a href="#mitra">Mitra</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Kontak</h4>
+        <span class="muted">support@fixhome.id</span>
+        <span class="muted">+62 812-0000-0000</span>
+        <span class="muted">08.00–20.00</span>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <small class="muted">© <span id="year"></span> FixHome. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- Modal Booking -->
+  <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true">
+    <div class="modal__overlay" data-close="true"></div>
+
+    <div class="modal__content" role="document">
+      <div class="modal__header">
+        <h3 id="bookingTitle">Form Booking</h3>
+        <button class="iconBtn" type="button" aria-label="Tutup" data-close="true">✕</button>
+      </div>
+
+      <form class="form" id="bookingForm">
+        <div class="formRow">
+          <label for="serviceName">Layanan</label>
+          <input id="serviceName" name="serviceName" type="text" placeholder="Contoh: Servis AC" required />
+        </div>
+
+        <div class="formRow">
+          <label for="customerName">Nama</label>
+          <input id="customerName" name="customerName" type="text" placeholder="Nama kamu" required />
+        </div>
+
+        <div class="formRow">
+          <label for="phone">No. HP/WhatsApp</label>
+          <input id="phone" name="phone" type="tel" placeholder="08xxxxxxxxxx" required />
+        </div>
+
+        <div class="formRow">
+          <label for="city">Kota</label>
+          <select id="city" name="city" required>
+            <option value="" selected disabled>Pilih kota</option>
+            <option value="surabaya">Surabaya</option>
+            <option value="sidoarjo">Sidoarjo</option>
+            <option value="gresik">Gresik</option>
+            <option value="malang">Malang</option>
+          </select>
+        </div>
+
+        <div class="formRow">
+          <label for="address">Alamat</label>
+          <textarea id="address" name="address" rows="3" placeholder="Alamat lengkap + patokan" required></textarea>
+        </div>
+
+        <div class="formRow">
+          <label for="notes">Detail keluhan/kebutuhan</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Contoh: AC tidak dingin, bocor..."></textarea>
+        </div>
+
+        <div class="formRow">
+          <label for="schedule">Jadwal</label>
+          <input id="schedule" name="schedule" type="datetime-local" required />
+        </div>
+
+        <div class="formActions">
+          <button class="btn" type="button" data-close="true">Batal</button>
+          <button class="btn btn--primary" type="submit">Kirim Booking</button>
+        </div>
+
+        <p class="muted small">Catatan: ini demo front-end. Untuk produksi, submit diarahkan ke API backend (mis. Laravel).</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
