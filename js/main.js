@@ -61,81 +61,30 @@ const CATEGORIES = [
 
 // Dummy listing data
 const LISTINGS = [
-  {
-    id: 1,
-    title: "Dingin Sejuk AC",
-    category: "AC",
-    city: "Surabaya",
-    district: "Gubeng",
-    distanceKm: 3.4,
-    priceFrom: 175000,
-    rating: 4.7,
-    reviews: 221,
-    verified: true,
-    certified: true,
-    fast: false,
-    warranty: true
-  },
-  {
-    id: 2,
-    title: "Sumber Ledeng Mandiri",
-    category: "Ledeng",
-    city: "Surabaya",
-    district: "Wonocolo",
-    distanceKm: 4.7,
-    priceFrom: 120000,
-    rating: 4.6,
-    reviews: 198,
-    verified: true,
-    certified: true,
-    fast: true,
-    warranty: false
-  },
-  {
-    id: 3,
-    title: "Budi Jaya Teknik",
-    category: "Listrik",
-    city: "Surabaya",
-    district: "Wonokromo",
-    distanceKm: 2.1,
-    priceFrom: 150000,
-    rating: 4.8,
-    reviews: 312,
-    verified: true,
-    certified: false,
-    fast: true,
-    warranty: true
-  },
-  {
-    id: 4,
-    title: "Rapi Cat & Plafon",
-    category: "Cat & Plafon",
-    city: "Jakarta",
-    district: "Tebet",
-    distanceKm: 3.0,
-    priceFrom: 200000,
-    rating: 4.4,
-    reviews: 92,
-    verified: false,
-    certified: false,
-    fast: false,
-    warranty: false
-  },
-  {
-    id: 5,
-    title: "Keramik Presisi",
-    category: "Keramik",
-    city: "Bandung",
-    district: "Cicendo",
-    distanceKm: 5.2,
-    priceFrom: 250000,
-    rating: 4.5,
-    reviews: 140,
-    verified: true,
-    certified: true,
-    fast: false,
-    warranty: true
-  },
+  { id: 1, title: "Dingin Sejuk AC", category: "AC", city: "Surabaya", district: "Wonokromo", distanceKm: 3.4, priceFrom: 175000, rating: 4.7, reviews: 221, verified: true, certified: true, fast: false, warranty: true },
+  { id: 2, title: "Sumber Ledeng Mandiri", category: "Ledeng", city: "Surabaya", district: "Wonocolo", distanceKm: 4.7, priceFrom: 120000, rating: 4.6, reviews: 198, verified: true, certified: true, fast: true, warranty: false },
+  { id: 3, title: "Budi Jaya Teknik", category: "Listrik", city: "Surabaya", district: "Gubeng", distanceKm: 2.1, priceFrom: 150000, rating: 4.8, reviews: 312, verified: true, certified: false, fast: true, warranty: true },
+  { id: 4, title: "Rapi Cat & Plafon", category: "Cat & Plafon", city: "Surabaya", district: "Tegalsari", distanceKm: 3.0, priceFrom: 200000, rating: 4.4, reviews: 92, verified: false, certified: false, fast: false, warranty: false },
+
+  { id: 5, title: "Keramik Presisi", category: "Keramik", city: "Sidoarjo", district: "Waru", distanceKm: 5.2, priceFrom: 250000, rating: 4.5, reviews: 140, verified: true, certified: true, fast: false, warranty: true },
+  { id: 6, title: "Sidoarjo AC Service", category: "AC", city: "Sidoarjo", district: "Porong", distanceKm: 4.0, priceFrom: 160000, rating: 4.6, reviews: 87, verified: true, certified: false, fast: true, warranty: false },
+  { id: 7, title: "Sidoarjo Kunci Pintu", category: "Kunci & Pintu", city: "Sidoarjo", district: "Sidoarjo", distanceKm: 2.5, priceFrom: 90000, rating: 4.3, reviews: 44, verified: false, certified: false, fast: true, warranty: false },
+
+  { id: 8, title: "Gresik Tukang Hebat", category: "Furniture", city: "Gresik", district: "Kebomas", distanceKm: 6.8, priceFrom: 300000, rating: 4.5, reviews: 65, verified: true, certified: true, fast: false, warranty: true },
+  { id: 9, title: "Gresik Listrik Cepat", category: "Listrik", city: "Gresik", district: "Manyar", distanceKm: 5.1, priceFrom: 110000, rating: 4.4, reviews: 54, verified: true, certified: false, fast: true, warranty: false },
+
+  { id: 10, title: "Malang Renovasi Pro", category: "Renovasi", city: "Malang", district: "Klojen", distanceKm: 7.3, priceFrom: 420000, rating: 4.8, reviews: 210, verified: true, certified: true, fast: false, warranty: true },
+  { id: 11, title: "Malang Ledeng Solusi", category: "Ledeng", city: "Malang", district: "Lowokwaru", distanceKm: 3.6, priceFrom: 125000, rating: 4.2, reviews: 38, verified: false, certified: false, fast: true, warranty: false },
+  { id: 12, title: "Malang Jasa Bersih", category: "Jasa Bersih", city: "Malang", district: "Sukun", distanceKm: 2.8, priceFrom: 85000, rating: 4.1, reviews: 29, verified: false, certified: false, fast: true, warranty: false },
+
+  { id: 13, title: "Surabaya Tukang Serba Bisa", category: "Renovasi", city: "Surabaya", district: "Genteng", distanceKm: 6.0, priceFrom: 300000, rating: 4.3, reviews: 52, verified: false, certified: false, fast: true, warranty: false },
+  { id: 14, title: "Sidoarjo Service AC & Bongkar", category: "AC", city: "Sidoarjo", district: "Waru", distanceKm: 3.2, priceFrom: 140000, rating: 4.6, reviews: 68, verified: true, certified: false, fast: true, warranty: false },
+  { id: 15, title: "Gresik Atap Aman", category: "Atap & Bocor", city: "Gresik", district: "Kebomas", distanceKm: 4.8, priceFrom: 220000, rating: 4.5, reviews: 47, verified: true, certified: true, fast: false, warranty: true },
+  { id: 16, title: "Malang Tukang Kunci", category: "Kunci & Pintu", city: "Malang", district: "Blimbing", distanceKm: 5.5, priceFrom: 95000, rating: 4.2, reviews: 30, verified: false, certified: true, fast: true, warranty: false },
+  { id: 17, title: "Surabaya CCTV & Smart Home", category: "CCTV / Smart Home", city: "Surabaya", district: "Dukuh Pakis", distanceKm: 2.5, priceFrom: 320000, rating: 4.7, reviews: 128, verified: true, certified: true, fast: true, warranty: true },
+  { id: 18, title: "Gresik Tukang Furniture", category: "Furniture", city: "Gresik", district: "Manyar", distanceKm: 6.2, priceFrom: 280000, rating: 4.4, reviews: 55, verified: false, certified: true, fast: false, warranty: false },
+  { id: 19, title: "Sidoarjo Cat & Plafon Cepat", category: "Cat & Plafon", city: "Sidoarjo", district: "Porong", distanceKm: 2.9, priceFrom: 180000, rating: 4.0, reviews: 22, verified: false, certified: false, fast: true, warranty: false },
+  { id: 20, title: "Malang Keramik Tuntas", category: "Keramik", city: "Malang", district: "Klojen", distanceKm: 3.9, priceFrom: 260000, rating: 4.6, reviews: 91, verified: true, certified: false, fast: false, warranty: true },
 ];
 
 boot();
@@ -212,13 +161,30 @@ function bindEvents() {
 function renderCategories() {
   if (!el.popularCats) return;
 
-  el.popularCats.innerHTML = CATEGORIES.map(c => `
+  // 'Semua Pekerjaan' button (clears category filter)
+  const allBtn = `
+    <button class="catBtn catBtn--all" type="button" data-cat="">
+      <span class="catIcon" aria-hidden="true">🔧</span>
+      <span>Semua Pekerjaan</span>
+    </button>
+  `;
+
+  const catsHtml = CATEGORIES.map(c => `
     <button class="catBtn" type="button" data-cat="${escapeHtml(c.name)}">
       <span class="catIcon" aria-hidden="true">${c.icon}</span>
       <span>${escapeHtml(c.name)}</span>
     </button>
   `).join("");
 
+  el.popularCats.innerHTML = allBtn + catsHtml;
+
+  // mark active category if any
+  const currentCat = el.searchCategory?.value || "";
+  const activeBtn = el.popularCats.querySelector(`[data-cat="${escapeHtml(currentCat)}"]`);
+  el.popularCats.querySelectorAll('.catBtn').forEach(b => b.classList.remove('is-active'));
+  if (activeBtn) activeBtn.classList.add('is-active');
+
+  // click handler
   el.popularCats.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-cat]");
     if (!btn) return;
@@ -228,7 +194,13 @@ function renderCategories() {
     if (el.searchCategory) {
       const opt = Array.from(el.searchCategory.options).find(o => o.value === cat);
       if (opt) el.searchCategory.value = cat;
+      else el.searchCategory.value = "";
     }
+
+    // active state
+    el.popularCats.querySelectorAll('.catBtn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+
     render();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });

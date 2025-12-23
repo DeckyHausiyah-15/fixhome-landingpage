@@ -188,6 +188,15 @@ a{ color: inherit; text-decoration:none; }
   font-weight: 800;
 }
 .catBtn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+.catBtn--all{
+  background: linear-gradient(180deg, var(--primary), var(--primary2));
+  color: #fff;
+}
+.catBtn--all .catIcon{ background: rgba(255,255,255,.12); }
+.catBtn.is-active{
+  border-color: rgba(30,99,255,.28);
+  box-shadow: 0 6px 20px rgba(30,99,255,.10);
+}
 .catIcon{
   width: 34px; height: 34px;
   border-radius: 14px;
