@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FixHome — Welcome</title>
+  <meta name="description" content="Jasa tukang profesional untuk perbaikan & renovasi cepat dan terpercaya." />
+  <link rel="stylesheet" href="css/welcome.css" />
+</head>
+
+<body>
+  <header class="w-nav">
+    <div class="w-container w-nav__inner">
+      <a class="w-brand" href="welcome.html" aria-label="FixHome">
+        <span class="w-brand__logo" aria-hidden="true">FH</span>
+        <span class="w-brand__name">FixHome</span>
+      </a>
+
+      <div class="w-nav__actions">
+        <button class="w-btn w-btn--ghost" type="button" id="btnGoHome">
+          Masuk ke Home
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-main">
+    <!-- 16:9 stage -->
+    <section class="w-stage" aria-label="Welcome FixHome">
+      <div class="w-hero">
+        <div class="w-hero__content is-centered">
+          <h1 class="w-title">Jasa Tukang<br />Profesional</h1>
+
+          <div class="w-divider" aria-hidden="true"></div>
+
+          <p class="w-subtitle">
+            Perbaikan &amp; Renovasi<br />
+            Cepat dan Terpercaya.
+          </p>
+
+          <div class="w-actions">
+            <button class="w-btn w-btn--cta" type="button" id="btnOrder">
+              Pesan Sekarang
+            </button>
+            <button class="w-btn w-btn--secondary" type="button" id="btnLearn">
+              Pelajari Lebih Lanjut
+            </button>
+            <button class="w-btn w-btn--secondary" type="button" id="btnForm">
+              Isi Google Form
+            </button>
+
+          </div>
+
+          <p class="w-hint">
+            Fokus: lokasi + kategori + listing seperti marketplace.
+          </p>
+        </div>
+
+        <div class="w-hero__media" aria-label="Foto tukang">
+          <img class="w-worker" src="assets/tukang.png" alt="Tukang profesional FixHome" loading="lazy" />
+
+          <!-- fallback bila gambar belum ada -->
+          <div class="w-worker-fallback" aria-hidden="true">
+            <div class="w-worker-fallback__badge">FixHome</div>
+            <div class="w-worker-fallback__text">Tambahkan gambar<br />assets/tukang.png</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-info" id="about">
+      <div class="w-container">
+        <div class="w-info__grid">
+          <div class="w-info__card">
+            <h2>Kenapa FixHome?</h2>
+            <p>
+              Cari tukang berdasarkan lokasi, kategori, rating, dan harga mulai — gaya marketplace yang cepat.
+            </p>
+          </div>
+
+          <div class="w-info__card">
+            <h2>Langkah cepat</h2>
+            <ol>
+              <li>Pilih lokasi &amp; radius</li>
+              <li>Cari layanan atau klik kategori</li>
+              <li>Chat / pesan tukang</li>
+            </ol>
+          </div>
+
+          <div class="w-info__card">
+            <h2>Keamanan</h2>
+            <p>
+              Badge seperti Terverifikasi, Fast Response, dan Bergaransi membantu pengguna memilih lebih yakin.
+            </p>
+          </div>
+        </div>
+
+        <footer class="w-footer">
+          <span>© <span id="year"></span> FixHome</span>
+          <span class="w-muted">Welcome page</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Google Form modal (iframe) -->
+  <div id="gformModal" class="gform-modal" aria-hidden="true">
+    <div class="gform-modal__backdrop" data-close></div>
+    <div class="gform-modal__panel" role="dialog" aria-modal="true" aria-label="Google Form">
+      <button class="gform-modal__close" id="btnCloseForm" aria-label="Tutup">×</button>
+      <div class="gform-modal__content">
+        <iframe id="gformFrame" src="https://forms.gle/cQjoT856Z8YTajBd6" frameborder="0" title="Formulir FixHome"></iframe>
+        <div class="gform-modal__fallback" id="gformFallback" hidden>
+          <p>Form tidak dapat dimuat. <a href="https://forms.gle/cQjoT856Z8YTajBd6" target="_blank" rel="noopener">Buka di tab baru</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/welcome.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,408 @@
+:root{
+  /* Samakan dengan styles.css (home) */
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e6edf7;
+
+  --primary:#1e63ff;
+  --primary2:#174fd0;
+
+  --radius: 16px;
+  --shadow: 0 10px 28px rgba(15,23,42,.08);
+  --container: 1120px;
+  --stage-overlay: rgba(0,0,0,.34); /* overlay to control background opacity */
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  background: var(--bg);
+}
+
+/* Layout container */
+.w-container{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* NAV (samakan feel topbar home) */
+.w-nav{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.w-nav__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 12px 0;
+}
+
+.w-brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  text-decoration:none;
+  color: var(--text);
+  font-weight: 900;
+}
+.w-brand__logo{
+  width: 38px; height: 38px;
+  border-radius: 14px;
+  display:grid; place-items:center;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 900;
+}
+.w-brand__name{ letter-spacing:.2px; }
+
+/* Buttons (samakan gaya home) */
+.w-btn{
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor:pointer;
+  transition: .15s ease;
+  font-weight: 800;
+}
+
+.w-btn--ghost{
+  background: transparent;
+  border-color: #dbe6f6;
+  color: var(--text);
+}
+.w-btn--ghost:hover{ background: #eef4ff; }
+
+/* MAIN */
+.w-main{
+  padding: 18px 0 34px;
+}
+
+/* 16:9 stage tapi warna home */
+.w-stage{
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative; /* for overlay pseudo-element */
+  box-shadow: var(--shadow);
+
+  /* tukang image fills the entire stage */
+  background:
+    url("../assets/tukang.png.jpg") right bottom / cover no-repeat,
+    radial-gradient(340px 180px at 24% 30%, rgba(30,99,255,.18), transparent 60%),
+    radial-gradient(340px 180px at 78% 25%, rgba(0,179,255,.10), transparent 60%),
+    linear-gradient(180deg, #ffffff, #f7fbff);
+
+  border: 1px solid var(--line);
+}
+
+/* Semi-transparent overlay to control background opacity and improve contrast */
+.w-stage::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--stage-overlay);
+  z-index: 1;
+  pointer-events: none;
+  transition: background .18s ease;
+}
+
+/* Hero layout */
+.w-hero{
+  height: 100%;
+  position: relative;             
+  display: grid;
+  place-items: center;             
+  padding: 32px;
+}
+
+.w-hero__content{
+  max-width: 720px;
+  text-align: center;              
+  position: relative;
+  z-index: 2;
+}
+
+/* class tambahan dari HTML */
+.is-centered{
+  margin: 0 auto;
+}
+
+.w-hero__media{
+  position: absolute;
+  right: 24px;
+  bottom: 18px;
+  z-index: 1;
+  opacity: 0.95;
+  pointer-events: none;             /* tidak mengganggu klik tombol */
+}
+
+
+.w-title{
+  margin: 0;
+  font-size: clamp(56px, 5.2vw, 84px); /* BESAR */
+  line-height: 1.02;
+  letter-spacing: .2px;
+  color: #ffffff; /* white fill */
+  -webkit-text-stroke: 1.6px var(--primary); /* blue outline */
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 6px rgba(30,99,255,0.12);
+}
+
+.w-divider{
+  width: 120px;
+  height: 5px;
+  border-radius: 999px;
+  margin: 18px auto 16px;            /* divider ikut center */
+  background: rgba(255,255,255,.22);
+}
+
+.w-subtitle{
+  margin: 0;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: rgba(255,255,255,.95); /* make readable on overlay */
+}
+
+
+/* Actions */
+.w-actions{
+  display:flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: center;           /* tombol di tengah */
+  flex-wrap: wrap;
+}
+
+
+/* CTA: biru sesuai home */
+.w-btn--cta{
+  background: var(--primary);
+  color:#fff;
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(30,99,255,.18);
+}
+.w-btn--cta:hover{
+  background: var(--primary2);
+  border-color: var(--primary2);
+  transform: translateY(-1px);
+}
+
+/* Secondary: putih outline */
+.w-btn--secondary{
+  background: #fff;
+  border-color: #dbe6f6;
+  color: var(--text);
+}
+.w-btn--secondary:hover{
+  background: #eef4ff;
+}
+
+/* hint */
+.w-hint{
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Media (gambar tukang) */
+.w-hero__media{
+  position: relative;
+  height: 100%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+}
+
+.w-worker{
+  width: min(360px, 30vw);           /* lebih kecil, tetap responsif */
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display:block;
+  background: #fff;
+}
+
+
+/* fallback kalau gambar tidak ketemu */
+.w-worker-fallback{
+  position:absolute;
+  inset: auto 0 0 auto;
+  width: min(360px, 30vw);
+  height: 220px;
+  border-radius: 18px;
+  border: 1px dashed #dbe6f6;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding: 18px;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events:none;
+}
+
+.w-worker-fallback__badge{
+  display:inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #f8fbff;
+  font-weight: 900;
+  color: var(--text);
+}
+.w-worker-fallback__text{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Info section (di bawah stage) */
+.w-info{
+  margin-top: 18px;
+}
+.w-info__grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+
+.w-info__card{
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+.w-info__card h2{
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+.w-info__card p, .w-info__card ol{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.w-info__card ol{ padding-left: 18px; }
+
+.w-footer{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.w-muted{ color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .w-stage{ aspect-ratio: auto; }
+  .w-hero{ grid-template-columns: 1fr; padding: 22px; }
+  .w-hero__media{ justify-content:flex-start; right: 12px; bottom: 12px; }
+  .w-title{ font-size: 36px; line-height: 1.1; }
+  .w-subtitle{ font-size: 16px; }
+  .w-info__grid{ grid-template-columns: 1fr; }
+  .w-worker{ width: min(300px, 40vw); }
+  .w-hero__content{ padding: 0 12px; }
+  .w-actions{ gap: 8px; }
+  .w-btn{ padding: 10px 12px; font-size: 14px; }
+}
+
+@media (max-width: 600px){
+  .w-stage{ width: calc(100% - 24px); border-radius: 12px; }
+  .w-hero{ padding: 18px; }
+  .w-hero__media{ position: absolute; right: 10px; bottom: 10px; opacity: 0.9; transform: scale(.95); }
+  .w-title{ font-size: 28px; }
+  .w-subtitle{ font-size: 15px; }
+  .w-worker{ width: min(240px, 45vw); height: auto; border-radius: 14px; }
+  .w-worker-fallback{ width: min(240px, 45vw); height: 160px; }
+  .w-nav__inner{ padding: 10px 0; }
+  .w-brand__logo{ width: 34px; height: 34px; border-radius: 12px; font-size: 14px; }
+  .w-actions{ flex-direction: column; align-items: center; gap: 10px; }
+  .w-btn--cta, .w-btn--secondary{ width: 100%; max-width: 320px; }
+}
+
+@media (max-width: 420px){
+  .w-title{ font-size: 22px; }
+  .w-subtitle{ font-size: 14px; }
+  .w-stage{ border-radius: 10px; }
+  .w-hero{ padding: 12px; }
+  .w-hero__media{ display: none; }
+  .w-info__card h2{ font-size: 15px; }
+  .w-info__card p, .w-info__card ol{ font-size: 13px; }
+  .w-footer{ flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+
+/* Background image responsive tweaks */
+@media (max-width: 980px){
+  .w-stage{ background-size: cover; background-position: right bottom; }
+}
+@media (max-width: 600px){
+  .w-stage{ background-size: cover; background-position: right bottom; }
+}
+@media (max-width: 420px){
+  .w-stage{ background-size: cover; background-position: center bottom; }
+}
+
+/* Google Form modal styles */
+.gform-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+.gform-modal[aria-hidden="false"]{ display: flex; }
+.gform-modal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.48);
+}
+.gform-modal__panel{
+  position: relative;
+  width: min(1100px, 95%);
+  height: 90vh;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  z-index: 2;
+}
+.gform-modal__close{
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 3;
+}
+.gform-modal__content{ width:100%; height:100%; display:flex; flex-direction:column; }
+#gformFrame{ flex:1; width:100%; border:0; }
+.gform-modal__fallback{ padding: 18px; text-align:center; background: #fff; }
+
+@media (max-width: 600px){
+  .gform-modal__panel{ height: 88vh; width: 100%; border-radius: 8px; margin: 0 8px; }
+}
+
+/* gambar tukang sudah jadi background, jadi sembunyikan elemen img */
+.w-hero__media{
+  display: none;
+}

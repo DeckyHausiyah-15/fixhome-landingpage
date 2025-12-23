@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FixHome — Marketplace Tukang</title>
+  <meta name="description" content="Cari tukang terpercaya berdasarkan lokasi, kategori, dan rating. Gaya marketplace ala OLX." />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- FIRST VISIT: redirect ke welcome -->
+  <script>
+    try {
+      if (!localStorage.getItem("fixhome_seen_welcome")) {
+        window.location.replace("welcome.html");
+      }
+    } catch (_) {}
+  </script>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="welcome.html" aria-label="FixHome (Welcome)">
+        <span class="brand__logo" aria-hidden="true">FH</span>
+        <span class="brand__name">FixHome</span>
+      </a>
+
+      <div class="topbar__controls">
+        <select id="topCity" class="control control--select" aria-label="Pilih kota">
+          <option value="Surabaya" selected>Surabaya</option>
+          <option value="Jakarta">Jakarta</option>
+          <option value="Bandung">Bandung</option>
+          <option value="Semarang">Semarang</option>
+        </select>
+
+        <select id="topRadius" class="control control--select" aria-label="Pilih radius">
+          <option value="2">≤ 2 km</option>
+          <option value="5" selected>≤ 5 km</option>
+          <option value="10">≤ 10 km</option>
+          <option value="0">Bebas</option>
+        </select>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="btn btn--ghost" type="button" id="btnAuthTop">Masuk / Daftar</button>
+        <button class="btn btn--primary" type="button" id="btnPostTop">Pasang Permintaan</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <section class="heroSearch">
+    <div class="container heroSearch__inner">
+      <div class="searchRow">
+        <select id="searchCategory" class="control control--select control--wide" aria-label="Kategori">
+          <option value="">Semua Kategori</option>
+          <option value="Renovasi">Renovasi</option>
+          <option value="Listrik">Listrik</option>
+          <option value="Ledeng">Ledeng</option>
+          <option value="AC">AC</option>
+          <option value="Cat & Plafon">Cat & Plafon</option>
+          <option value="Keramik">Keramik</option>
+          <option value="Furniture">Furniture</option>
+          <option value="CCTV / Smart Home">CCTV / Smart Home</option>
+          <option value="Kunci & Pintu">Kunci & Pintu</option>
+          <option value="Atap & Bocor">Atap & Bocor</option>
+          <option value="Taman">Taman</option>
+          <option value="Jasa Bersih">Jasa Bersih</option>
+        </select>
+
+        <input id="searchQuery" class="control control--input" type="search" placeholder="Cari tukang / layanan..." />
+
+        <button id="btnSearch" class="btn btn--primary btn--pill" type="button">Cari</button>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Terverifikasi</span>
+        <span class="chip">Fast Response</span>
+        <span class="chip">Bergaransi</span>
+        <span class="heroHint">Fokus: lokasi + kategori + listing seperti marketplace.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori populer -->
+  <section class="section">
+    <div class="container section__head">
+      <h2>Kategori Populer</h2>
+      <p>Klik kategori tanpa perlu mengetik — gaya marketplace yang cepat.</p>
+    </div>
+
+    <div class="container">
+      <div class="catGrid" id="popularCats"></div>
+    </div>
+  </section>
+
+  <!-- Main layout: filter + listing -->
+  <section class="section">
+    <div class="container layout">
+      <!-- Filter -->
+      <aside class="filter">
+        <div class="filter__head">
+          <h3>Filter</h3>
+          <button class="btn btn--ghost btn--sm" type="button" id="btnReset">Reset</button>
+        </div>
+
+        <div class="filter__group">
+          <div class="filter__label">LOKASI</div>
+          <select id="fCity" class="control control--select">
+            <option value="Surabaya" selected>Surabaya</option>
+            <option value="Jakarta">Jakarta</option>
+            <option value="Bandung">Bandung</option>
+            <option value="Semarang">Semarang</option>
+          </select>
+
+          <select id="fRadius" class="control control--select">
+            <option value="2">≤ 2 km</option>
+            <option value="5" selected>≤ 5 km</option>
+            <option value="10">≤ 10 km</option>
+            <option value="0">Bebas</option>
+          </select>
+
+          <div class="note">Catatan: demo ini mensimulasikan jarak.</div>
+        </div>
+
+        <div class="filter__group">
+          <div class="filter__label">HARGA</div>
+          <div class="twoCols">
+            <div>
+              <div class="small">Min</div>
+              <input id="priceMin" class="control control--input" type="number" value="0" min="0" />
+            </div>
+            <div>
+              <div class="small">Max</div>
+              <input id="priceMax" class="control control--input" type="number" value="500000" min="0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="filter__group">
+          <div class="filter__label">RATING</div>
+          <label class="radio"><input type="radio" name="rating" value="0" id="ratingAny" checked /> Semua</label>
+          <label class="radio"><input type="radio" name="rating" value="4.0" id="rating40" /> ≥ 4.0</label>
+          <label class="radio"><input type="radio" name="rating" value="4.5" id="rating45" /> ≥ 4.5</label>
+        </div>
+
+        <div class="filter__group">
+          <div class="filter__label">VERIFIKASI</div>
+          <label class="check"><input type="checkbox" id="fVerified" /> Terverifikasi FixHome</label>
+          <label class="check"><input type="checkbox" id="fCertified" /> Bersertifikat</label>
+        </div>
+
+        <div class="filter__group">
+          <div class="filter__label">URUTKAN</div>
+          <select id="sortBy" class="control control--select">
+            <option value="newest" selected>Terbaru</option>
+            <option value="cheapest">Termurah</option>
+            <option value="rating">Rating tertinggi</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Listing -->
+      <main class="listing">
+        <div class="listing__head">
+          <div>
+            <h3>Listing Tukang</h3>
+            <div class="meta" id="resultMeta">0 hasil</div>
+          </div>
+        </div>
+
+        <div class="listing__grid" id="listingGrid"></div>
+      </main>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year"></span> FixHome</span>
+      <span class="muted">Marketplace demo</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
